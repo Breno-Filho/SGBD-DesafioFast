@@ -1,0 +1,23 @@
+CREATE DATABASE FastWorkshops;
+
+USE FastWorkshops;
+
+CREATE TABLE Colaborador (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Workshop (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    DataRealizacao DATETIME NOT NULL,
+    Descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Presenca (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    ColaboradorId INT NOT NULL,
+    WorkshopId INT NOT NULL,
+    FOREIGN KEY (ColaboradorId) REFERENCES Colaborador(Id) ON DELETE CASCADE,
+    FOREIGN KEY (WorkshopId) REFERENCES Workshop(Id) ON DELETE CASCADE
+);
